@@ -1,7 +1,0 @@
-{
-    "name": "@monorepo/shared",
-    "private": true,
-    "dependencies": {
-        "@monorepo/shared": "workspace:*"
-    }
-}
