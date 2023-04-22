@@ -2,6 +2,10 @@
   "name": "ratemyselfie",
   "version": "1.0.0",
   "description": "",
+  "bugs": {
+    "url": "https://gitlab.com/ahmedfudge/ratemyselfie/issues"
+  },
+  "homepage": "https://gitlab.com/ahmedfudge/ratemyselfie#readme",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
