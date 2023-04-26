@@ -10,6 +10,7 @@ const app: Express = express();
 
 app.use(express.json());
 app.use(cors());
+app.use('/v1', routes);
 
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
     console.log('Using client build directory');
@@ -19,7 +20,6 @@ if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging')
         res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
     });
   }
-app.use('/v1', routes);
 interface FormInputs {
     email: string,
     password: string
