@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging')
         res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
     });
   }
-
+app.use('/v1', routes);
 interface FormInputs {
     email: string,
     password: string
@@ -56,8 +56,6 @@ interface FormInputs {
     return res.status(200).json(user)
   });
 
-
-app.use('/v1', routes);
 
 const port = process.env.PORT || 8000;
 
