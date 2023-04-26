@@ -10,8 +10,9 @@ interface SquareOAuthResponse {
 
 oauth.get('/square', function (req: Request, res: Response, next: NextFunction){
     console.log("v1")
-    console.log(req.body);
-    if (req.params.code) {
-        res.json({ success: true, code: req.params.code })
+    console.log(req.params.code);
+    console.log(req.query.code);
+    if (req.query.code) {
+        res.json({ success: true, code: req.query.code })
     }
 });
