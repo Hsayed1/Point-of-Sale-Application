@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import express, { Express, Request, Response } from "express";
 import path from "path";
 import cors from "cors";
+import { routes } from './src/routes'
 
 dotenv.config();
 
@@ -11,10 +12,11 @@ app.use(express.json());
 app.use(cors());
 
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
+    console.log('Using client build directory');
     app.use(express.static(path.join(__dirname, '../client/build')));
-
     app.get('/*', function (req: Request, res: Response) {
-      res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+        console.log('Returning index.html')
+        res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
     });
   }
 
@@ -54,9 +56,8 @@ interface FormInputs {
     return res.status(200).json(user)
   });
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello World From the Typescript Server!')
-});
+
+app.use('/v1', routes);
 
 const port = process.env.PORT || 8000;
 

@@ -1,10 +1,12 @@
-
+import React from 'react';
 import { useState, ChangeEvent, FormEvent } from "react";
-import { ReactComponent as Logo } from "./logo.svg";
+import Icon from "./logo";
 import { getData } from "./utils/data-utils";
 import FormInput from './components/form-input/form-input';
+import { Button } from '@blueprintjs/core';
 
 import './App.css';
+import OrderScreenApp from './OrderScreenApp';
 
 // TypeScript declarations
 type User = {
@@ -19,9 +21,15 @@ const defaultFormFields = {
   password: '',
 };
 
+const maria: User = {
+  id: 1,
+  name: 'Maria Doe',
+  email: 'maria@example.com',
+  password: 'maria123'
+};
 const App = () => {
   // react hooks
-  const [user, setUser] = useState<User | null>()
+  const [user, setUser] = useState<User | null>(maria)
   const [formFields, setFormFields] = useState(defaultFormFields)
   const { email, password } = formFields
 
@@ -44,7 +52,6 @@ const App = () => {
       // make the API call
       const res:User = await getData('/login', email, password);
       setUser(res);
-      resetFormFields();
     } catch (error) {
       alert('User Sign In Failed');
     }
@@ -57,11 +64,14 @@ const App = () => {
 
   return (
     <div className='App-header'>
-      <h1>
-        { user && `Welcome! ${user.name}`}
-      </h1>
+      { user ?
+      <OrderScreenApp
+        user={user}
+      />
+      :
+      <div>
       <div className="card">
-        <Logo className="logo" />
+        <Icon />
         <h2>Sign In</h2>
         <form onSubmit={handleSubmit}>
           <FormInput
@@ -83,11 +93,13 @@ const App = () => {
           <div className="button-group">
             <button type="submit">Sign In</button>
             <span>
-              <button type="button" onClick={reload}>Clear</button>
+              <Button type="button" onClick={reload}>Clear</Button>
             </span>
           </div>
         </form>
       </div>
+      </div>
+      }
     </div>
   );
 }
