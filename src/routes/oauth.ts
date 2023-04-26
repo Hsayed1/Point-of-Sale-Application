@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import express, { Express, Request, Response } from "express";
+import express, {NextFunction, Request, Response} from "express";
 export const oauth = express.Router();
 
 interface SquareOAuthResponse {
@@ -8,8 +8,10 @@ interface SquareOAuthResponse {
 }
 
 
-oauth.get('/square', function (req, res, next){
+oauth.get('/square', function (req: Request, res: Response, next: NextFunction){
     console.log("v1")
     console.log(req.body);
-    return {success: true};
+    if (req.params.code) {
+        res.json({ success: true, code: req.params.code })
+    }
 });
