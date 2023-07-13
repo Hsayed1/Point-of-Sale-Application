@@ -16,7 +16,7 @@ dotenv.config();
 declare module 'express-session' {
   export interface SessionData {
     user: { [key: string]: any };
-    email: { [key: string]: any };
+    email: string;
   }
 }
 
