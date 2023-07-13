@@ -13,6 +13,8 @@ export const getData = async <T>(
       body: JSON.stringify({ email, password })
     });
 
+    console.log(res.json());
+
     return await res.json();
   }
   

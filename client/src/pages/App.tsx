@@ -1,11 +1,11 @@
 import React from 'react';
 import { useState, ChangeEvent, FormEvent } from "react";
-import Icon from "./logo";
-import { getData } from "./utils/data-utils";
-import FormInput from './components/form-input/form-input';
+import Icon from "../logo";
+import { getData } from "../utils/data-utils";
+import FormInput from '../components/form-input/form-input';
 import { Button } from '@blueprintjs/core';
 
-import './App.css';
+import '../App.css';
 import OrderScreenApp from './OrderScreenApp';
 
 // TypeScript declarations
@@ -29,7 +29,7 @@ const maria: User = {
 };
 const App = () => {
   // react hooks
-  const [user, setUser] = useState<User | null>(maria)
+  const [user, setUser] = useState<User | null>()
   const [formFields, setFormFields] = useState(defaultFormFields)
   const { email, password } = formFields
 
@@ -57,9 +57,10 @@ const App = () => {
     }
   };
 
-  const reload = () => {
-    setUser(null);
+  const oauth = () => {
+
     resetFormFields();
+
   };
 
   return (
@@ -91,9 +92,16 @@ const App = () => {
             onChange={handleChange}
           />
           <div className="button-group">
-            <button type="submit">Sign In</button>
+            <Button
+                text={"Log In"}
+                type={"submit"}
+            />
             <span>
-              <Button type="button" onClick={reload}>Clear</Button>
+              <Button
+                  rightIcon="share"
+                  text={"Square OAuth "}
+                  onClick={() => oauth()}
+              />
             </span>
           </div>
         </form>

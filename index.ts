@@ -1,15 +1,26 @@
 import dotenv from "dotenv";
 import express, { Express, Request, Response } from "express";
+import session from 'express-session';
 import path from "path";
 import cors from "cors";
-import { routes } from './src/routes'
+import { routes } from './src/routes';
+import {
+    client,
+    sessionOptions,
+    createUser,
+    validatePassword
+} from "./src/models/mongo";
 
 dotenv.config();
 
 const app: Express = express();
+client.connect();
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: false}));
 app.use(cors());
+app.use(session(sessionOptions));
+
 app.use('/v1', routes);
 
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
@@ -41,21 +52,46 @@ interface FormInputs {
     }
   ];
 
+
+app.post('/signup', async function(req: Request, res: Response) {
+   const { email, password } = req.body;
+   console.log(`${req.body.email}: ${req.body.password}`);
+   if (email && password) {
+       const result = await createUser(email, password);
+       if (!result) {
+           return res.json({ error: true, message: "User already exists."});
+       }
+       return res.json({ result })
+   }
+   console.log("Bad email or password");
+   res.sendStatus(500);
+});
+
   // route login
-  app.post('/login', (req: Request, res: Response) => {
+app.post('/login', async function(req: Request, res: Response) {
+    console.log(req.body);
     const { email, password }:FormInputs = req.body;
+    const result = await validatePassword(email, password);
 
-    const user = users.find(user => {
-      return user.email === email && user.password === password
-    });
-
-    if (!user) {
-      return res.status(404).send('User Not Found!')
+    if (!result) {
+        return res.status(404).send('User Not Found!')
     }
 
-    return res.status(200).json(user)
-  });
+    req.session.email = email;
+    req.session.save( (err: Error) => {
+        if (err) return console.error(err);
+    });
 
+    return res.status(200).json(result);
+});
+
+
+  app.get("/logout", async (req: Request, res: Response) => {
+     req.session.destroy((err: Error) => {
+         if (err) return console.error(err);
+     });
+     return res.clearCookie("connect.sid").send("Logout complete")
+  });
 
 const port = process.env.PORT || 8000;
 
