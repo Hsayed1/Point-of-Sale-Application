@@ -30,6 +30,8 @@ app.use(session(sessionOptions));
 
 app.use('/v1', routes);
 
+console.log(`process.env.NODE_ENV ${process.env.NODE_ENV}`);
+
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
     console.log('Using client build directory');
     app.use(express.static(path.join(__dirname, '../client/build')));
@@ -42,22 +44,6 @@ interface FormInputs {
     email: string,
     password: string
   }
-
-  // Array of example users for testing purposes
-  const users = [
-    {
-      id: 1,
-      name: 'Maria Doe',
-      email: 'maria@example.com',
-      password: 'maria123'
-    },
-    {
-      id: 2,
-      name: 'Juan Doe',
-      email: 'juan@example.com',
-      password: 'juan123'
-    }
-  ];
 
 
 app.post('/signup', async function(req: Request, res: Response) {
