@@ -13,6 +13,13 @@ import {
 
 dotenv.config();
 
+declare module 'express-session' {
+  export interface SessionData {
+    user: { [key: string]: any };
+    email: { [key: string]: any };
+  }
+}
+
 const app: Express = express();
 client.connect();
 
