@@ -33,7 +33,7 @@ const defaultFormFields = {
 
 const App = ({ token }: AppProps) => {
   const dispatch = useDispatch()
-  const access_token = useSelector((state) => state.access_token.value)
+  // const access_token = useSelector((state) => state.access_token.value);
   
   const navigate = useNavigate();
   const location = useLocation();
