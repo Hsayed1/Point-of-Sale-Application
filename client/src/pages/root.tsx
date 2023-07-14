@@ -11,7 +11,7 @@ import { User } from '../models';
 const queryParams = new URLSearchParams(window.location.search);
 console.log(queryParams.get("access_token"));
 
-const token = queryParams.get("access_token");
+const token = queryParams.get("access_token") || "";
 queryParams.delete("access_token");
 
 const maria: User = {
@@ -23,12 +23,12 @@ const maria: User = {
 
 const router = createBrowserRouter([
     {
-        path: "/",
-        element: <App />,
+        path: "/dashboard",
+        element: <App token={token} />,
     },
     {
-        path: "/dashboard",
-        element: <Dashboard user={maria} />
+        path: "/",
+        element: <Dashboard />
     }
 ]);
 

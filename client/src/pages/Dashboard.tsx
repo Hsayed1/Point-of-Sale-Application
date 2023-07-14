@@ -14,11 +14,7 @@ type AppProps = {
     user: User;
 }
 
-const Dashboard = ({ user }: AppProps) => {
-    // react hooks
-
-    const queryParams = new URLSearchParams(window.location.search);
-    console.log(queryParams.get("access_token"))
+const Dashboard = () => {
 
     return (
         <div className='App-header'>

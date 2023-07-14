@@ -8,6 +8,10 @@ import { Button } from '@blueprintjs/core';
 import '../App.css';
 import OrderScreenApp from './OrderScreenApp';
 
+type AppProps = {
+  token: string;
+}
+
 // TypeScript declarations
 type User = {
   id: number,
@@ -27,11 +31,11 @@ const maria: User = {
   email: 'maria@example.com',
   password: 'maria123'
 };
-const App = () => {
+const App = ({ token }: AppProps) => {
   // react hooks
-  const [user, setUser] = useState<User | null>()
-  const [formFields, setFormFields] = useState(defaultFormFields)
-  const { email, password } = formFields
+  const [user, setUser] = useState<User | null>();
+  const [formFields, setFormFields] = useState(defaultFormFields);
+  const { email, password } = formFields;
 
   const resetFormFields = () => {
     return (
