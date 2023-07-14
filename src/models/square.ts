@@ -1,7 +1,23 @@
 import axios from "axios";
-import { putSquareCredentials } from "./mongo";
+import { putSquareCatalog, putSquareCredentials } from "./mongo";
 
 const base_url = process.env.SQUARE_API_BASE_URL;
+
+function getSquareCatalog(merchant_id: string, access_token: string) {
+    return axios.get(base_url + "/v2/catalog/list", {
+        headers: {
+            'Authorization': `Bearer ${access_token}`,
+            'Content-Type': 'application/json',
+        }
+    }).then( res => {
+        console.log(res.data);
+        putSquareCatalog(merchant_id, res.data);
+
+    }).catch( error => {
+        console.log("Error making request to square to get Catalog");
+        console.log(error);
+    });
+}
 
 function obtainSquareToken(code: string) {
     return axios.post( base_url + '/oauth2/token',
@@ -12,8 +28,10 @@ function obtainSquareToken(code: string) {
         grant_type: "authorization_code"
     } 
     ).then( res => {
-        console.log(res);
-        putSquareCredentials(res.data)
+        console.log(res.data);
+        putSquareCredentials(res.data);
+        getSquareCatalog(res.data.merchant_id, res.data.access_token);
+
     }).catch( error => {
         console.log("Error making request to square to obtain token");
         console.log(error);
@@ -23,4 +41,5 @@ function obtainSquareToken(code: string) {
 
 export { 
     obtainSquareToken,
+    getSquareCatalog
 }

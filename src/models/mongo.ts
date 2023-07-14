@@ -51,6 +51,15 @@ export async function putSquareCredentials(creds: any) {
     return await db.collection('square').insertOne(creds);
 }
 
+
+export async function putSquareCatalog(merchant_id: string, catalog: any) {
+    const db = client.db("test");
+    return await db.collection('menus').insertOne({
+        catalog,
+        merchant_id
+    });
+}
+
 export async function getUser(username: string) {
     const test_db = client.db("test");
     return await test_db.collection('users').findOne({
