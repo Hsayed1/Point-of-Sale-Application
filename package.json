@@ -16,6 +16,7 @@
   "dependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/webcrypto": "^0.0.28",
+    "axios": "^1.4.0",
     "bcrypt": "^5.1.0",
     "connect-mongo": "^5.0.0",
     "cors": "^2.8.5",

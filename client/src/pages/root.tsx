@@ -8,6 +8,8 @@ import {
 
 import { User } from '../models';
 
+const queryParams = new URLSearchParams(window.location.search);
+
 const maria: User = {
     id: 1,
     name: 'Maria Doe',

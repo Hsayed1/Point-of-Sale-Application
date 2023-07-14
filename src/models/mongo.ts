@@ -46,6 +46,10 @@ export async function create_client() {
     }
 }
 
+export async function putSquareCredentials(creds: any) {
+    const db = client.db("test");
+    return await db.collection('square').insertOne(creds);
+}
 
 export async function getUser(username: string) {
     const test_db = client.db("test");
