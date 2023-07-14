@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useState, ChangeEvent, FormEvent } from "react";
 import Icon from "../logo";
@@ -26,14 +26,16 @@ const defaultFormFields = {
   password: '',
 };
 
-const maria: User = {
-  id: 1,
-  name: 'Maria Doe',
-  email: 'maria@example.com',
-  password: 'maria123'
-};
+
+
 const App = ({ token }: AppProps) => {
+  
   const navigate = useNavigate();
+  useEffect(() => {
+    if (!token || token.length == 0) {
+      navigate('/');
+    }
+  }, []);
 
   const navigateToPOS = () => {
     navigate('/orders');
@@ -42,8 +44,10 @@ const App = ({ token }: AppProps) => {
   const navigateToOrders = () => {
     navigate('/orders');
   };
+
   // react hooks
   const [user, setUser] = useState<User | null>();
+  const [accessToken, setAccessToken] = useState<string>(token);
   const [formFields, setFormFields] = useState(defaultFormFields);
 
 

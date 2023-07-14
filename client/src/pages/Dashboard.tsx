@@ -3,7 +3,7 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import Icon from "../logo";
 import { getData } from "../utils/data-utils";
 import FormInput from '../components/form-input/form-input';
-import { Button } from '@blueprintjs/core';
+import { Button, Text, TextArea } from '@blueprintjs/core';
 import SquareOAuth from '../components/square/oauth-button';
 import { User } from '../models';
 
@@ -16,7 +16,7 @@ const Dashboard = () => {
     return (
         <div className='App-header'>
             <div className="card">
-                <text>P.O.S</text>
+                <Text>P.O.S</Text>
                 <SquareOAuth />
             </div>
         </div>
