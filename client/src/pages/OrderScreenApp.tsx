@@ -14,6 +14,7 @@ type AppProps = {
 
 const OrderScreenApp = ({ token }: AppProps) => {
   // react hooks
+  console.log(token);
 
   return (
     <div className='App-header'>

@@ -44,6 +44,7 @@ const App = ({ token }: AppProps) => {
   const navigateToOrders = () => {
     navigate('/orders');
   };
+  console.log(token);
 
   // react hooks
   const [user, setUser] = useState<User | null>();
