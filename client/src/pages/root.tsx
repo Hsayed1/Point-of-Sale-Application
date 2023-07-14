@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import { User } from '../models';
+import OrderScreenApp from "./OrderScreenApp";
 
 const queryParams = new URLSearchParams(window.location.search);
 console.log(queryParams.get("access_token"));
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <Dashboard />
+    },
+    {
+        path: "/orders",
+        element: <OrderScreenApp token={token} />
     }
 ]);
 
