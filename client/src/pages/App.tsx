@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { useState, ChangeEvent, FormEvent } from "react";
 import Icon from "../logo";
 import { getData } from "../utils/data-utils";
 import FormInput from '../components/form-input/form-input';
+import { useSelector, useDispatch } from 'react-redux';
+import { setToken } from '../utils/store';
+
 import { Button } from '@blueprintjs/core';
 
 import '../App.css';
@@ -29,11 +32,27 @@ const defaultFormFields = {
 
 
 const App = ({ token }: AppProps) => {
+  const dispatch = useDispatch()
+  const access_token = useSelector((state) => state.access_token.value)
   
   const navigate = useNavigate();
+  const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
+
   useEffect(() => {
     if (!token || token.length == 0) {
       navigate('/');
+    }
+  }, []);
+
+  useEffect(() => {
+    if (searchParams.has("access_token")) {
+      const temp = searchParams.get("access_token");
+      if (temp && temp.length > 0) {
+        setToken(temp);
+      }
+      searchParams.delete("access_token");
+      setSearchParams(searchParams);
     }
   }, []);
 

@@ -11,7 +11,7 @@ import '../App.css';
 
 
 
-const Dashboard = () => {
+const LandingPage = () => {
 
     return (
         <div className='App-header'>
@@ -23,4 +23,4 @@ const Dashboard = () => {
     );
 }
 
-export default Dashboard;
+export default LandingPage;
