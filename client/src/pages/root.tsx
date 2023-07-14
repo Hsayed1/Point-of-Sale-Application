@@ -9,7 +9,10 @@ import {
 import { User } from '../models';
 
 const queryParams = new URLSearchParams(window.location.search);
-console.log(queryParams.get("access_token"))
+console.log(queryParams.get("access_token"));
+
+const token = queryParams.get("access_token");
+queryParams.delete("access_token");
 
 const maria: User = {
     id: 1,
