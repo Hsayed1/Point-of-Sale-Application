@@ -19,8 +19,8 @@ function getSquareCatalog(merchant_id: string, access_token: string) {
     });
 }
 
-function obtainSquareToken(code: string) {
-    return axios.post( base_url + '/oauth2/token',
+async function obtainSquareToken(code: string) {
+    return await axios.post( base_url + '/oauth2/token',
     {
         code,
         client_id: process.env.SQUARE_APP_ID,

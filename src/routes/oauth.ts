@@ -12,14 +12,14 @@ interface SquareOAuthResponse {
 
 
 
-oauth.get('/square', function (req: Request, res: Response, next: NextFunction) {
+oauth.get('/square', async function (req: Request, res: Response, next: NextFunction) {
     console.log("v1")
     console.log(req.query);
     const code: any = req.query.code
     if (req.query.code) {
-        const data = obtainSquareToken(code);
+        const data = await obtainSquareToken(code);
         console.log("Result from Obtain Square Token");
         console.log(data);
-        res.redirect(`/dashboard?access_token=abc`);
+        res.redirect(`/dashboard?access_token=${data.access_token}`);
     }
 });
