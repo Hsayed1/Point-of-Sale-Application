@@ -29,9 +29,11 @@ function obtainSquareToken(code: string) {
     } 
     ).then( res => {
         console.log(res.data);
+        // TODO: (ahmedfudge) check DB to see if the merchant ID is there
+        // if not create new entry else 
         putSquareCredentials(res.data);
         getSquareCatalog(res.data.merchant_id, res.data.access_token);
-
+        return res.data;
     }).catch( error => {
         console.log("Error making request to square to obtain token");
         console.log(error);

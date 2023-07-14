@@ -17,7 +17,9 @@ oauth.get('/square', function (req: Request, res: Response, next: NextFunction) 
     console.log(req.query);
     const code: any = req.query.code
     if (req.query.code) {
-        obtainSquareToken(code)
-        res.redirect('/dashboard')
+        const data = obtainSquareToken(code);
+        console.log("Result from Obtain Square Token");
+        console.log(data);
+        res.redirect(`/dashboard?access_token=abc`);
     }
 });
