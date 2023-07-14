@@ -10,16 +10,13 @@ import { User } from '../models';
 import '../App.css';
 
 
-type AppProps = {
-    user: User;
-}
 
 const Dashboard = () => {
 
     return (
         <div className='App-header'>
             <div className="card">
-                <text>Mar7aban {user.name}</text>
+                <text>P.O.S</text>
                 <SquareOAuth />
             </div>
         </div>

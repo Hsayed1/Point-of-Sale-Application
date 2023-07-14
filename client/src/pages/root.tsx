@@ -14,13 +14,6 @@ console.log(queryParams.get("access_token"));
 const token = queryParams.get("access_token") || "";
 queryParams.delete("access_token");
 
-const maria: User = {
-    id: 1,
-    name: 'Maria Doe',
-    email: 'maria@example.com',
-    password: 'maria123'
-};
-
 const router = createBrowserRouter([
     {
         path: "/dashboard",
