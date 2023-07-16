@@ -31,7 +31,7 @@ const { refreshToken, setToken } = access_token.actions;
     reducer: {
         access_token: access_token.reducer,
     },
- })
+ });
 
  export {
     refreshToken, 

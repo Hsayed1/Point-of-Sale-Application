@@ -24,14 +24,14 @@ type User = {
   password: string
 };
 
-const defaultFormFields = {
-  email: '',
-  password: '',
-};
-
-
 
 const App = ({ token }: AppProps) => {
+  
+  // react hooks
+  const [user, setUser] = useState<User | null>();
+  const [accessToken, setAccessToken] = useState<string>(token);
+
+  
   const dispatch = useDispatch()
   // const access_token = useSelector((state) => state.access_token.value);
   
@@ -65,10 +65,7 @@ const App = ({ token }: AppProps) => {
   };
   console.log(token);
 
-  // react hooks
-  const [user, setUser] = useState<User | null>();
-  const [accessToken, setAccessToken] = useState<string>(token);
-  const [formFields, setFormFields] = useState(defaultFormFields);
+  
 
 
 
