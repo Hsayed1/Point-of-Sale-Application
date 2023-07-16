@@ -1,6 +1,8 @@
 import React from "react";
 import App from "./App";
 import LandingPage from "./LandingPage";
+import HomePage from "./HomePage";
+
 import {
     createBrowserRouter,
     RouterProvider,
@@ -9,6 +11,8 @@ import { setToken } from "../utils/store";
 
 import { User } from '../models';
 import OrderScreenApp from "./OrderScreenApp";
+import Menu from "./Menu";
+import Orders from "./Orders";
 
 const queryParams = new URLSearchParams(window.location.search);
 console.log(queryParams.get("access_token"));
@@ -27,6 +31,21 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <LandingPage />
+    },
+    {
+        path: "/HomePage",
+        element: <HomePage />
+
+    },
+    {
+        path: "/Menu",
+        element: <Menu />
+
+    },
+    {
+        path: "/Orders",
+        element: <Orders/>
+
     },
     {
         path: "/orders",
