@@ -3,9 +3,8 @@ import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { useState, ChangeEvent, FormEvent } from "react";
 import Icon from "../logo";
 import { getData } from "../utils/data-utils";
-import FormInput from '../components/form-input/form-input';
 import { useSelector, useDispatch } from 'react-redux';
-import { setToken } from '../utils/store';
+import { login } from '../utils/store';
 
 import { Button } from '@blueprintjs/core';
 
@@ -32,11 +31,10 @@ const App = ({ token }: AppProps) => {
   const [accessToken, setAccessToken] = useState<string>(token);
 
   
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   // const access_token = useSelector((state) => state.access_token.value);
   
   const navigate = useNavigate();
-  const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
@@ -48,8 +46,9 @@ const App = ({ token }: AppProps) => {
   useEffect(() => {
     if (searchParams.has("access_token")) {
       const temp = searchParams.get("access_token");
+      console.log(temp);
       if (temp && temp.length > 0) {
-        setToken(temp);
+        dispatch(login(temp));
       }
       searchParams.delete("access_token");
       setSearchParams(searchParams);
@@ -63,11 +62,6 @@ const App = ({ token }: AppProps) => {
   const navigateToOrders = () => {
     navigate('/orders');
   };
-  console.log(token);
-
-  
-
-
 
   return (
     <div className='App-header'>

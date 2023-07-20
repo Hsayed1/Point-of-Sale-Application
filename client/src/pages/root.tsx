@@ -5,18 +5,16 @@ import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
-import { setToken } from "../utils/store";
+import { getAccessToken, login, store } from "../utils/store";
 
 import { User } from '../models';
 import OrderScreenApp from "./OrderScreenApp";
+import { useSelector, useDispatch } from "react-redux";
 
 const queryParams = new URLSearchParams(window.location.search);
-console.log(queryParams.get("access_token"));
 
-const token = queryParams.get("access_token") || "";
-if (token.length > 0) {
-    setToken(token);
-}
+const token = queryParams.get("access_token") || '';
+
 queryParams.delete("access_token");
 
 const router = createBrowserRouter([
