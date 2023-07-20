@@ -7,7 +7,7 @@ type MenuItemCardProps = {
 }
 
 
-const MenuItemCardProps = ({ item }: MenuItemCardProps) => {
+const MenuItemCard = ({ item }: MenuItemCardProps) => {
 
 //   const [menu, setMenu] = useState<Menu>([]);
 
@@ -29,6 +29,5 @@ const MenuItemCardProps = ({ item }: MenuItemCardProps) => {
   );
 };
 
-export default MenuItemCardProps;
+export default MenuItemCard;
 
-export {}; 
