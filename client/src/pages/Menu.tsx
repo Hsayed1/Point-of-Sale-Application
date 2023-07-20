@@ -1,9 +1,20 @@
 import React from 'react';
+import { getMenu } from '../utils/data-utils';
 
-const Menu = () => {
+type MenuProps = {
+  token: string;
+}
+
+
+const Menu = ({ token }: MenuProps) => {
+
+  const menu = getMenu(token);
+
   return (
-    <div>
-      <h2>Menu page</h2>
+    <div className='App-header'>
+      <div>
+        <h2>Menu page</h2>
+      </div>
     </div>
   );
 };

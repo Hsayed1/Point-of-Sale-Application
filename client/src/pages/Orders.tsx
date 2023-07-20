@@ -1,10 +1,17 @@
 import React from 'react';
 
-const Orders= () => {
+type OrdersProps = {
+  token: string;
+}
+
+const Orders= ({ token }: OrdersProps) => {
+
   return (
-    <div>
-      <h2>Orders Page</h2>
-      {}
+    <div className='App-header'>
+      <div>
+        <h2>Orders Page</h2>
+        {}
+      </div>
     </div>
   );
 };
