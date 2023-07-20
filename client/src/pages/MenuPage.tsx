@@ -13,8 +13,8 @@ const MenuPage = ({ token }: MenuProps) => {
   const [menu, setMenu] = useState<Menu>([]);
 
   useEffect(() => {
-    getMenu(token).then((menu) => {
-      setMenu(menu);
+    getMenu(token).then((m) => {
+      setMenu(m);
     });
   }, []);
 
@@ -24,7 +24,8 @@ const MenuPage = ({ token }: MenuProps) => {
     <div className='App-header'>
       <div>
         <h2>Menu page</h2>
-        {menu.filter((menuItem) => isItem ).map((item) => {
+        {menu.filter(isItem).map((item) => {
+          console.log(item);
           return (
             <MenuItemCard item={item as Item} />
           )
