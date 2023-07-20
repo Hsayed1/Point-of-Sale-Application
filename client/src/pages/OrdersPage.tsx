@@ -4,7 +4,7 @@ type OrdersProps = {
   token: string;
 }
 
-const Orders= ({ token }: OrdersProps) => {
+const OrdersPage = ({ token }: OrdersProps) => {
 
   return (
     <div className='App-header'>
@@ -16,4 +16,4 @@ const Orders= ({ token }: OrdersProps) => {
   );
 };
 
-export default Orders;
+export default OrdersPage;

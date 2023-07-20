@@ -11,8 +11,8 @@ import { getAccessToken, login, store } from "../utils/store";
 
 import { User } from '../models';
 import OrderScreenApp from "./OrderScreenApp";
-import Menu from "./Menu";
-import Orders from "./Orders";
+import MenuPage from "./MenuPage";
+import Orders from "./OrdersPage";
 import { useSelector, useDispatch } from "react-redux";
 
 const queryParams = new URLSearchParams(window.location.search);
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/Menu",
-        element: <Menu token={token} />
+        element: <MenuPage token={token} />
 
     },
     {

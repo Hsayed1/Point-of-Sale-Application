@@ -8,7 +8,7 @@ type MenuProps = {
 }
 
 
-const Menu = ({ token }: MenuProps) => {
+const MenuPage = ({ token }: MenuProps) => {
 
   const [menu, setMenu] = useState<Menu>([]);
 
@@ -34,6 +34,6 @@ const Menu = ({ token }: MenuProps) => {
   );
 };
 
-export default Menu;
+export default MenuPage;
 
 export {}; 
