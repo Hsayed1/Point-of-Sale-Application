@@ -2,8 +2,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { Menu } from './store';
 
+var base_url = "";
+
+if (process.env.NODE_ENV === 'production') {
+  base_url = '/v1';
+} else {
+  base_url = process.env.REACT_APP_API_URL + '/v1'
+}
+
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL + '/v1',
+  baseURL: base_url,
   timeout: 1000,
   headers: {'Authorization': `Bearer ` }
 });
