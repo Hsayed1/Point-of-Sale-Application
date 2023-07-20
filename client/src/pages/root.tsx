@@ -37,12 +37,12 @@ const router = createBrowserRouter([
     },
     {
         path: "/Menu",
-        element: <Menu />
+        element: <Menu token={token} />
 
     },
     {
         path: "/Orders",
-        element: <Orders/>
+        element: <Orders token={token}/>
 
     },
     {
