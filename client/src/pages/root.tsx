@@ -24,16 +24,11 @@ queryParams.delete("access_token");
 const router = createBrowserRouter([
     {
         path: "/dashboard",
-        element: <App token={token} />,
+        element: <HomePage token={token} />,
     },
     {
         path: "/",
         element: <LandingPage />
-    },
-    {
-        path: "/HomePage",
-        element: <HomePage />
-
     },
     {
         path: "/Menu",

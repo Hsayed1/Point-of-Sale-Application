@@ -1,7 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const HomePage = () => {
+type HomePageProps = {
+  token: string;
+}
+
+
+const HomePage = ({ token }: HomePageProps) => {
   const navigate = useNavigate();
 
   const handleMenuClick = () => {
