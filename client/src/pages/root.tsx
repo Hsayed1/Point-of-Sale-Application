@@ -1,6 +1,8 @@
 import React from "react";
 import App from "./App";
 import LandingPage from "./LandingPage";
+import HomePage from "./HomePage";
+
 import {
     createBrowserRouter,
     RouterProvider,
@@ -9,6 +11,8 @@ import { getAccessToken, login, store } from "../utils/store";
 
 import { User } from '../models';
 import OrderScreenApp from "./OrderScreenApp";
+import Menu from "./Menu";
+import Orders from "./Orders";
 import { useSelector, useDispatch } from "react-redux";
 
 const queryParams = new URLSearchParams(window.location.search);
@@ -25,6 +29,21 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <LandingPage />
+    },
+    {
+        path: "/HomePage",
+        element: <HomePage />
+
+    },
+    {
+        path: "/Menu",
+        element: <Menu />
+
+    },
+    {
+        path: "/Orders",
+        element: <Orders/>
+
     },
     {
         path: "/orders",
