@@ -51,11 +51,24 @@ export async function putSquareCredentials(creds: any) {
     return await db.collection('square').insertOne(creds);
 }
 
+export async function getSquareCredentials(access_token: string) {
+    const db = client.db("test");
+    return await db.collection('square').findOne({
+        access_token
+    });
+}
 
 export async function putSquareCatalog(merchant_id: string, catalog: any) {
     const db = client.db("test");
     return await db.collection('menus').insertOne({
         catalog,
+        merchant_id
+    });
+}
+
+export async function getSquareCatalog(merchant_id: string) {
+    const db = client.db("test");
+    return await db.collection('menus').findOne({
         merchant_id
     });
 }

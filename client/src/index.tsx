@@ -9,6 +9,8 @@ import reportWebVitals from './reportWebVitals';
 import Root from './pages/root';
 import { store } from './utils/store';
 import { Provider } from 'react-redux';
+require('dotenv').config();
+console.log(process.env);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
