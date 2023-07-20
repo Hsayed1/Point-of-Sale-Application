@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Menu } from './store';
 
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL: process.env.REACT_APP_API_URL + '/v1',
   timeout: 1000,
   headers: {'Authorization': `Bearer ` }
 });
