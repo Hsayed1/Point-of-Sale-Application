@@ -30,7 +30,7 @@ const LandingPage = () => {
                     }}
                 />
 
-                 {/* Example ProductButton */}
+                
                 <ProductButton
                     productName="Example Product"
                     productPhotoUrl="example URL" // Replace with the actual product photo URL
