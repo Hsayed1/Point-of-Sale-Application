@@ -29,6 +29,7 @@ const ProductButton: React.FC<ProductButtonProps> = ({ productName, productPhoto
           alignItems: 'center',
           position: 'relative',
           backgroundColor: '#fff',
+          cursor: 'pointer',
         }}
         onClick={handleProductButtonClick}
       >

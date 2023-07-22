@@ -32,6 +32,7 @@ const ItemLabel = ({ name, price, onSelect }: AppProps) => {
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '40px 100px',
+        cursor: 'pointer',
       }}
     >
       <span style={{ marginRight: '8px',fontSize: '25px', fontWeight: 'bold' }}>
