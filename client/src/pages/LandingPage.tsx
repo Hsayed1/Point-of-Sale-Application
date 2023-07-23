@@ -20,27 +20,6 @@ const LandingPage = () => {
                 <Text>P.O.S</Text>
                 <SquareOAuth />
 
-                {/* Example ItemLabel */}
-                <ItemLabel
-                    name="Example Item"
-                    price="$9.99"
-                    onSelect={(item) => {
-                        console.log(`Item "${item}" selected!`);
-                        // You can handle the item selection logic here or pass it down to other components.
-                    }}
-                />
-
-                
-                <ProductButton
-                    productName="Example Product"
-                    productPhotoUrl="example URL" // Replace with the actual product photo URL
-                    
-                />
-
-                
-                    <QuantityButton />
-
-                    <CheckoutButton/>
 
             </div>
         </div>
