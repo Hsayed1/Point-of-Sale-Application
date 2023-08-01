@@ -4,9 +4,10 @@ import MenuModal from './MenuModal';
 type ProductButtonProps = {
   productName: string;
   productPhotoUrl?: string;
+  modifierListId?: string;
 };
 
-const ProductButton: React.FC<ProductButtonProps> = ({ productName, productPhotoUrl }) => {
+const ProductButton: React.FC<ProductButtonProps> = ({ productName, productPhotoUrl, modifierListId }) => {
   const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
 
   const handleProductButtonClick = () => {
@@ -60,8 +61,8 @@ const ProductButton: React.FC<ProductButtonProps> = ({ productName, productPhoto
         </div>
       </button>
 
-      {/* Render the MenuModal with isOpen and onClose props */}
-      {isMenuModalOpen && <MenuModal isOpen={isMenuModalOpen} onClose={handleMenuModalClose} />}
+      {/* Render MenuModal with isOpen, onClose, and modifierListId props */} 
+      {isMenuModalOpen && <MenuModal isOpen={isMenuModalOpen} onClose={handleMenuModalClose} modifierListId={modifierListId} />}
     </>
   );
 };
