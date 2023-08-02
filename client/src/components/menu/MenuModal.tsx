@@ -1,6 +1,6 @@
 import React from 'react';
 import QuantityButton from './QuantityButton';
-import CheckoutButton from './CheckoutButton';
+import AddButton from './AddButton'; // Assuming the component name is 'AddButton'
 
 type MenuModalProps = {
   isOpen: boolean;
@@ -47,15 +47,18 @@ const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose }) => {
     zIndex: 999,
   };
 
+  const handleCloseMenuModal = () => {
+    onClose(); // Call the onClose function to close the MenuModal
+  };
+
   return (
     <>
       <div style={modalStyle}>
         <h2></h2>
-        
         <div style={contentStyle}>
           <QuantityButton />
           <div style={buttonSpacingStyle} />
-          <CheckoutButton />
+          <AddButton onCloseMenuModal={handleCloseMenuModal} /> {/* Pass onCloseMenuModal prop */}
         </div>
 
       </div>

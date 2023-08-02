@@ -31,7 +31,7 @@ const MenuPage = ({ token }: MenuProps) => {
   const containerStyle: React.CSSProperties = {
     display: 'flex',
     flexWrap: 'wrap', // Allow flex items to wrap to the next line
-    justifyContent: 'flex-start', // Align flex items to the very left horizontally
+    justifyContent: 'space-between', // Align flex items with space between them horizontally
   };
 
   const buttonWrapperStyle: React.CSSProperties = {
@@ -44,14 +44,31 @@ const MenuPage = ({ token }: MenuProps) => {
     textAlign: 'center',
     alignItems: 'center',
     fontSize: '20px',
-    marginTop: '0', // Remove default margin from the h1 element
+    marginTop: '0', 
   };
 
   const buttonsContainerStyle: React.CSSProperties = {
     alignItems: 'left',
     flexWrap: 'wrap',
     justifyContent: 'flex-start',
+    paddingBottom: '20px', 
   };
+
+  const checkoutButtonStyle: React.CSSProperties = {
+    position: 'fixed', 
+    bottom: '20px', 
+    left: '50%', 
+    transform: 'translateX(-50%)', 
+    width: '300px',
+    height: '100px',
+    backgroundColor: 'green',
+    color: 'white',
+    fontSize: '20px',
+    borderRadius: '8px',
+    cursor: 'pointer',
+    marginTop: '500px'
+  };
+  
 
   const pageStyle: React.CSSProperties = {
     background: '#B2DFDB',
@@ -67,17 +84,24 @@ const MenuPage = ({ token }: MenuProps) => {
       <header style={headerContainer}>
         <h1>Menu Page</h1>
       </header>
-      <div style={buttonsContainerStyle}>
-        {data.catalog.objects.map((object, index) => (
-          <div key={index} style={buttonWrapperStyle}>
-            {object.type === 'ITEM' && (
-              <ProductButton
-                productName={object.item_data.name}
-                //modifierListId={object.item_data.modifier_list_info?.modifier_list_id}
-              />
-            )}
-          </div>
-        ))}
+      <div style={containerStyle}>
+        <div style={buttonsContainerStyle}>
+          {data.catalog.objects.map((object, index) => (
+            <div key={index} style={buttonWrapperStyle}>
+              {object.type === 'ITEM' && (
+                <ProductButton
+                  productName={object.item_data.name}
+                  modifierListId={object.item_data.modifier_list_info ?  
+                    object.item_data.modifier_list_info.modifier_list_id 
+                  : undefined
+                  }  
+                />
+              )}
+            </div>
+          ))}
+        </div>
+        {/* Checkout button */}
+        <button style={checkoutButtonStyle}>Checkout</button>
       </div>
     </div>
   );
