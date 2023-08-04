@@ -122,9 +122,12 @@ const slice = createSlice({
     initialState,
     reducers: {
         login: (state, action) => {
+            localStorage.setItem('accessToken', action.payload);
+            console.log("Setting access token");
             state.accessToken = action.payload;
         },
         logout: (state) => {
+            localStorage.removeItem('accessToken');
             state.accessToken = '';
         }
     }

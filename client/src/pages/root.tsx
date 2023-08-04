@@ -17,7 +17,11 @@ import { useSelector, useDispatch } from "react-redux";
 
 const queryParams = new URLSearchParams(window.location.search);
 
-const token = queryParams.get("access_token") || '';
+const token = queryParams.get("access_token") || localStorage.getItem("accessToken") || '';
+localStorage.setItem("accessToken", token); 
+if (token) {
+    login(token);
+}
 
 queryParams.delete("access_token");
 

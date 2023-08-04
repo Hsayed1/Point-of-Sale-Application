@@ -22,11 +22,15 @@ const MenuPage = ({ token }: MenuProps) => {
       .then((response) => response.json())
       .then((jsonData) => setData(jsonData))
       .catch((error) => console.error('Error fetching data:', error));
+      getMenu(token).then((m) => {
+      setMenu(m);
+    });
   }, []);
 
   if (!data) {
     return <div>Loading...</div>;
   }
+
 
   const containerStyle: React.CSSProperties = {
     display: 'flex',
@@ -68,7 +72,17 @@ const MenuPage = ({ token }: MenuProps) => {
     cursor: 'pointer',
     marginTop: '500px'
   };
-  
+
+  const isItem = (item: MenuItem): item is Item => item.type === 'ITEM';
+
+  const renderItem = (item: MenuItem) => {
+    switch (item.type) {
+      case 'ITEM':
+        return (<MenuItemCard item={item} />);
+      case 'MODIFIER_LIST':
+        return (<div>Modifier list</div>);
+    }
+  }
 
   const pageStyle: React.CSSProperties = {
     background: '#B2DFDB',

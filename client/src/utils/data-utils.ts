@@ -21,6 +21,9 @@ export const getMenu = async (token: string) => {
   console.log('Getting Menu');
   const res = await instance.get(`/menu?access_token=${token}`);
   console.log(res.data);
+  if (res.data.error) {
+    return [];
+  }
   return res.data;  
 };
 
