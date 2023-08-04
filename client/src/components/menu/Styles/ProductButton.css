@@ -1,0 +1,39 @@
+/* ProductButton.css */
+.productButtonContainer {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  .productImageContainer {
+    width: 100%;
+    height: 75%;
+    overflow: hidden;
+    border-bottom: 2px solid #ccc;
+  }
+  
+  .productImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .productNameContainer {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #008000;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #fff; /* Text color for the product name */
+  }
+  

@@ -1,0 +1,97 @@
+/* MenuModal.css */
+.modalStyle {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: auto;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    padding: 20px;
+  }
+  
+  .contentStyle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .buttonSpacingStyle {
+    margin-top: 20px;
+  }
+  
+  .overlayStyle {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+  
+  .itemInfoStyle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .itemNameStyle {
+    flex: 1;
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 50px;
+  }
+  
+  .itemPriceStyle {
+    font-size: 20px;
+    margin-left: 10px;
+  }
+  
+  .quantityContainer {
+    width: 300px;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 30px;
+    cursor: pointer;
+    background: white;
+  }
+  
+  .decrementButton {
+    color: red;
+    margin-right: 8px;
+    cursor: pointer;
+  }
+  
+  .incrementButton {
+    color: green;
+    margin-left: 8px;
+    cursor: pointer;
+  }
+  
+  .addToCartButton {
+    width: 200px;
+    height: 50px;
+    background-color: blue;
+    color: white;
+    font-size: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 5px;
+  }
+  

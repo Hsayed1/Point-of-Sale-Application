@@ -1,68 +1,78 @@
-import React from 'react';
-import QuantityButton from './QuantityButton';
-import AddButton from './AddButton'; // Assuming the component name is 'AddButton'
+import React, { useEffect } from "react";
+import ItemLabel from "./ItemLabel";
+import { ALIGN_LEFT } from "@blueprintjs/core/lib/esm/common/classes";
+import { useState } from "react";
+import "./Styles/MenuModal.css";
 
 type MenuModalProps = {
   isOpen: boolean;
   onClose: () => void;
+  productName: string;
   modifierListId?: string;
+  onAddToCart: (item: { name: string; quantity: number }) => void; // Updated prop for the callback function
 };
 
-const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose }) => {
-  const modalStyle: React.CSSProperties = {
-    display: isOpen ? 'block' : 'none',
-    position: 'fixed',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: '400px',
-    height: 'auto',
-    backgroundColor: '#fff',
-    borderRadius: '4px',
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
-    zIndex: 1000,
-    padding: '20px',
+interface DataObject {
+  _id: { $oid: string };
+  catalog: {
+    objects: Array<any>;
+  };
+  merchant_id: string;
+}
+
+const MenuModal: React.FC<MenuModalProps> = ({
+  isOpen,
+  onClose,
+  productName,
+  onAddToCart,
+  modifierListId,
+}) => {
+  const handleAddToCart = () => {
+    // Call the onAddToCart callback function and pass the selected item details with quantity
+    onAddToCart({ name: productName, quantity: quantity });
+
+    // Close the MenuModal when the "Add to Cart" button is clicked
+    onClose();
   };
 
-  const contentStyle: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '20px',
+  const [quantity, setQuantity] = useState(1);
+  const handleIncrement = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
   };
 
-  const buttonSpacingStyle: React.CSSProperties = {
-    marginTop: '20px', // Adjust the spacing as needed
-  };
-
-  const overlayStyle: React.CSSProperties = {
-    display: isOpen ? 'block' : 'none',
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    zIndex: 999,
-  };
-
-  const handleCloseMenuModal = () => {
-    onClose(); // Call the onClose function to close the MenuModal
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      setQuantity((prevQuantity) => prevQuantity - 1);
+    }
   };
 
   return (
     <>
-      <div style={modalStyle}>
-        <h2></h2>
-        <div style={contentStyle}>
-          <QuantityButton />
-          <div style={buttonSpacingStyle} />
-          <AddButton onCloseMenuModal={handleCloseMenuModal} /> {/* Pass onCloseMenuModal prop */}
-        </div>
+      <div className="modalStyle">
+        <div className="contentStyle">
+          {/* Display the item name and price in a flex container */}
+          <div className="itemInfoStyle">
+            <div className="itemNameStyle">{productName}</div>
+          </div>
 
+          <div className="quantityContainer">
+            <span onClick={handleDecrement} className="decrementButton">
+              -
+            </span>
+            <span>{quantity}</span>
+            <span onClick={handleIncrement} className="incrementButton">
+              +
+            </span>
+          </div>
+          <div className="buttonSpacingStyle" />
+
+          {/* Inline "Add to Cart" button */}
+          <button className="addToCartButton" onClick={handleAddToCart}>
+            Add to Cart
+          </button>
+        </div>
       </div>
-      <div style={overlayStyle} onClick={onClose}></div>
+      <div className="overlayStyle" onClick={onClose}></div>
     </>
   );
 };

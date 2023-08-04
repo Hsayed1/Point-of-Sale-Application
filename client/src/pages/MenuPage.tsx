@@ -1,11 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import ProductButton from '../components/menu/ProductButton';
-import { Colors, Overlay } from '@blueprintjs/core';
+import React, { useEffect, useState } from "react";
+import ProductButton from "../components/menu/ProductButton";
+import { Colors, Overlay } from "@blueprintjs/core";
+import MenuModal from "../components/menu/MenuModal";
+import { useNavigate } from "react-router-dom";
+import CompleteOrderButton from "../components/menu/CompleteOrderButton";
+import { getMenu } from "../utils/data-utils";
+import MenuItemCard from "../components/menu/MenuItemCard";
+import { Item, MenuItem } from "../utils/store";
+import "./Styles/MenuPage.css";
+
 
 type MenuProps = {
   token: string;
 };
 
+//interface to represent dataobject for local testing
 interface DataObject {
   _id: { $oid: string };
   catalog: {
@@ -15,15 +24,20 @@ interface DataObject {
 }
 
 const MenuPage = ({ token }: MenuProps) => {
+  //data array to hold json data for local testing
   const [data, setData] = useState<DataObject | null>(null);
 
+  const [cartItems, setCartItems] = useState<
+    { name: string; quantity: number }[]
+  >([]); // Array to hold cart items
+
   useEffect(() => {
-    fetch('/StoreData.json')
+    fetch("/StoreData.json")
       .then((response) => response.json())
       .then((jsonData) => setData(jsonData))
-      .catch((error) => console.error('Error fetching data:', error));
-      getMenu(token).then((m) => {
-      setMenu(m);
+      .catch((error) => console.error("Error fetching data:", error));
+    getMenu(token).then((m) => {
+      //setMenu(m);
     });
   }, []);
 
@@ -31,94 +45,87 @@ const MenuPage = ({ token }: MenuProps) => {
     return <div>Loading...</div>;
   }
 
-
-  const containerStyle: React.CSSProperties = {
-    display: 'flex',
-    flexWrap: 'wrap', // Allow flex items to wrap to the next line
-    justifyContent: 'space-between', // Align flex items with space between them horizontally
-  };
-
-  const buttonWrapperStyle: React.CSSProperties = {
-    padding: '10px',
-    width: '200px',
-    margin: '5px',
-  };
-
-  const headerContainer: React.CSSProperties = {
-    textAlign: 'center',
-    alignItems: 'center',
-    fontSize: '20px',
-    marginTop: '0', 
-  };
-
-  const buttonsContainerStyle: React.CSSProperties = {
-    alignItems: 'left',
-    flexWrap: 'wrap',
-    justifyContent: 'flex-start',
-    paddingBottom: '20px', 
-  };
-
-  const checkoutButtonStyle: React.CSSProperties = {
-    position: 'fixed', 
-    bottom: '20px', 
-    left: '50%', 
-    transform: 'translateX(-50%)', 
-    width: '300px',
-    height: '100px',
-    backgroundColor: 'green',
-    color: 'white',
-    fontSize: '20px',
-    borderRadius: '8px',
-    cursor: 'pointer',
-    marginTop: '500px'
-  };
-
-  const isItem = (item: MenuItem): item is Item => item.type === 'ITEM';
+  const isItem = (item: MenuItem): item is Item => item.type === "ITEM";
 
   const renderItem = (item: MenuItem) => {
     switch (item.type) {
-      case 'ITEM':
-        return (<MenuItemCard item={item} />);
-      case 'MODIFIER_LIST':
-        return (<div>Modifier list</div>);
+      case "ITEM":
+        return <MenuItemCard item={item} />;
+      case "MODIFIER_LIST":
+        return <div>Modifier list</div>;
     }
-  }
+  };
 
-  const pageStyle: React.CSSProperties = {
-    background: '#B2DFDB',
-    margin: '0',
-    padding: '0',
-    minHeight: '100vh',
-    display: 'flex',
-    flexDirection: 'column',
+  // Function to handle adding items to the cart
+  const handleAddToCart = (item: { name: string; quantity: number }) => {
+    setCartItems((prevItems) => [...prevItems, item]);
+  };
+  // Function to handle removing an item from the cart
+  const handleRemoveFromCart = (index: number) => {
+    setCartItems((prevItems) => prevItems.filter((item, i) => i !== index));
+  };
+
+  //rendering product buttons
+  const renderProductButtons = (data: DataObject) => {
+    return data.catalog.objects.map((object, index) => {
+      if (object.type === "ITEM") {
+        return (
+          <div key={index} className="menuButtonWrapperStyle">
+            <ProductButton
+              productName={object.item_data.name}
+              modifierListId={
+                object.item_data.modifier_list_info
+                  ? object.item_data.modifier_list_info.modifier_list_id
+                  : undefined
+              }
+              onAddToCart={handleAddToCart}
+            />
+          </div>
+        );
+      }
+      return null; // Return null for non-ITEM objects
+    });
+  };
+
+  // Function to render cart items in the cartContainer
+  const renderCartItems = (cartItems: { name: string; quantity: number }[]) => {
+    return cartItems.map((item, index) => (
+      <div key={index} className="menuCartItemStyle">
+        <span>{item.quantity}</span>
+        <span>{item.name}</span>
+        <button
+          onClick={() => handleRemoveFromCart(index)}
+          style={{
+            backgroundColor: "red",
+            color: "white",
+            fontSize: "14px",
+            borderRadius: "4px",
+            padding: "4px 8px",
+            cursor: "pointer",
+          }}
+        >
+          Remove
+        </button>
+      </div>
+    ));
   };
 
   return (
-    <div style={pageStyle}>
-      <header style={headerContainer}>
+    <div className="menuPageContainer">
+      <header className="menuHeaderContainer">
         <h1>Menu Page</h1>
       </header>
-      <div style={containerStyle}>
-        <div style={buttonsContainerStyle}>
-          {data.catalog.objects.map((object, index) => (
-            <div key={index} style={buttonWrapperStyle}>
-              {object.type === 'ITEM' && (
-                <ProductButton
-                  productName={object.item_data.name}
-                  modifierListId={object.item_data.modifier_list_info ?  
-                    object.item_data.modifier_list_info.modifier_list_id 
-                  : undefined
-                  }  
-                />
-              )}
-            </div>
-          ))}
+      <div className="menuContainerStyle">
+        <div className="menuButtonsContainerStyle">
+          {renderProductButtons(data)}
+          <div className="menuCartContainerStyle">
+            <h3 className="menuCartHeader">Cart</h3>
+            {renderCartItems(cartItems)}
+          </div>
         </div>
-        {/* Checkout button */}
-        <button style={checkoutButtonStyle}>Checkout</button>
       </div>
+      <CompleteOrderButton cartItems={cartItems} />
     </div>
   );
 };
-
 export default MenuPage;
