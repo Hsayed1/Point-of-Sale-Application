@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import CompleteOrderButton from "../components/menu/CompleteOrderButton";
 import { getMenu } from "../utils/data-utils";
 import MenuItemCard from "../components/menu/MenuItemCard";
-import { Item, MenuItem } from "../utils/store";
+import { Item, Menu, MenuItem } from "../utils/store";
 import "./Styles/MenuPage.css";
 
 
@@ -110,6 +110,14 @@ const MenuPage = ({ token }: MenuProps) => {
     ));
   };
 
+  //callback function to clear cart for new orders
+  const handleOrderComplete = () => {
+    setCartItems([]);
+    renderCartItems(cartItems)
+
+  };
+  
+
   return (
     <div className="menuPageContainer">
       <header className="menuHeaderContainer">
@@ -124,7 +132,7 @@ const MenuPage = ({ token }: MenuProps) => {
           </div>
         </div>
       </div>
-      <CompleteOrderButton cartItems={cartItems} />
+      <CompleteOrderButton cartItems={cartItems} onOrderComplete={handleOrderComplete} />
     </div>
   );
 };

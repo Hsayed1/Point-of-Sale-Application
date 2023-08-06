@@ -30,8 +30,7 @@ const MenuModal: React.FC<MenuModalProps> = ({
   const handleAddToCart = () => {
     // Call the onAddToCart callback function and pass the selected item details with quantity
     onAddToCart({ name: productName, quantity: quantity });
-
-    // Close the MenuModal when the "Add to Cart" button is clicked
+    //close modal
     onClose();
   };
 
@@ -50,7 +49,6 @@ const MenuModal: React.FC<MenuModalProps> = ({
     <>
       <div className="modalStyle">
         <div className="contentStyle">
-          {/* Display the item name and price in a flex container */}
           <div className="itemInfoStyle">
             <div className="itemNameStyle">{productName}</div>
           </div>
