@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
-import MenuModal from './MenuModal';
+import React, { useState } from "react";
+import MenuModal from "./MenuModal";
+import "./Styles/ProductButton.css";
 
 type ProductButtonProps = {
   productName: string;
   productPhotoUrl?: string;
+  modifierListId?: string;
+  onAddToCart: (item: { name: string; quantity: number }) => void; // New prop for the callback function
 };
 
-const ProductButton: React.FC<ProductButtonProps> = ({ productName, productPhotoUrl }) => {
+const ProductButton: React.FC<ProductButtonProps> = ({
+  productName,
+  productPhotoUrl,
+  modifierListId,
+  onAddToCart,
+}) => {
   const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
 
   const handleProductButtonClick = () => {
@@ -20,48 +28,30 @@ const ProductButton: React.FC<ProductButtonProps> = ({ productName, productPhoto
   return (
     <>
       <button
-        style={{
-          width: '200px',
-          height: '200px',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-start',
-          alignItems: 'center',
-          position: 'relative',
-          backgroundColor: '#fff',
-          cursor: 'pointer',
-        }}
+        className="productButtonContainer"
         onClick={handleProductButtonClick}
       >
-        <div style={{ width: '100%', height: '75%', overflow: 'hidden', borderBottom: '2px solid #ccc' }}>
+        <div className="productImageContainer">
           {productPhotoUrl && (
             <img
               src={productPhotoUrl}
               alt={productName}
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              className="productImage"
             />
           )}
         </div>
-        <div
-          className="product-name"
-          style={{
-            width: '100%',
-            height: '25%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: '#008000',
-            position: 'absolute',
-            bottom: '0',
-            left: '0',
-          }}
-        >
-          {productName}
-        </div>
+        <div className="productNameContainer">{productName}</div>
       </button>
 
-      {/* Render the MenuModal with isOpen and onClose props */}
-      {isMenuModalOpen && <MenuModal isOpen={isMenuModalOpen} onClose={handleMenuModalClose} />}
+      {isMenuModalOpen && (
+        <MenuModal
+          isOpen={isMenuModalOpen}
+          onClose={handleMenuModalClose}
+          productName={productName}
+          modifierListId={modifierListId}
+          onAddToCart={onAddToCart}
+        />
+      )}
     </>
   );
 };

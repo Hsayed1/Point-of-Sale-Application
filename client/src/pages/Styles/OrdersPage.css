@@ -1,0 +1,36 @@
+/* OrdersPage.css */
+.pageContainerStyle {
+    background: #f0f0f0; 
+    color: #000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-size: 30px;
+    align-items: center;
+    justify-content: flex-start
+  }
+  
+  .ordersContainerStyle {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .orderContainerStyle {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 20px;
+    padding: 10px;
+    margin: 10px;
+    border: 3px solid #ccc;
+    align-items: center;
+  }
+  
+  .orderButtonStyle {
+    background-color: green;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+  

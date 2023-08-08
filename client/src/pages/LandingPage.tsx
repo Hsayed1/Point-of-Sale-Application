@@ -7,8 +7,6 @@ import SquareOAuth from '../components/square/oauth-button';
 import '../App.css';
 import ItemLabel from '../components/menu/ItemLabel';
 import ProductButton from '../components/menu/ProductButton';
-import QuantityButton from '../components/menu/QuantityButton';
-import CheckoutButton from '../components/menu/CheckoutButton';
 
 
 

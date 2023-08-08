@@ -1,0 +1,83 @@
+
+.menuPageContainer{
+    background: #B2DFDB;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Container styles */
+  .menuContainerStyle {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  /* Button wrapper styles */
+  .menuButtonWrapperStyle {
+    padding: 10px;
+    width: 200px;
+    margin: 5px;
+  }
+  
+  /* Header container styles */
+  .menuHeaderContainer {
+    text-align: center;
+    align-items: center;
+    font-size: 20px;
+    margin-top: 0;
+  }
+  
+  /* Buttons container styles */
+  .menuButtonsContainerStyle {
+    align-items: left;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding-bottom: 20px;
+  }
+  
+  /* Checkout button styles */
+  .menuCheckoutButtonStyle {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 100px;
+    background-color: green;
+    color: white;
+    font-size: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  /* Cart container styles */
+  .menuCartContainerStyle {
+    background-color: #f0f0f0;
+    color: #000;
+    padding: 10px;
+    width: 300px;
+    height: calc(100vh - 120px);
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Cart item styles */
+  .menuCartItemStyle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+  }
+  

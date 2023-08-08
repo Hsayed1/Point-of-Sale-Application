@@ -1,0 +1,308 @@
+{
+  "_id": { "$oid": "64b710a4cf3358cec2873f88" },
+  "catalog": {
+    "objects": [
+      {
+        "type": "MODIFIER_LIST",
+        "id": "BEXPPOCIODVSPHGHAI6NFQJE",
+        "updated_at": "2023-07-15T23:58:33.055Z",
+        "created_at": "2023-07-11T22:51:39.034Z",
+        "version": { "$numberDouble": "1689465513055.0" },
+        "is_deleted": false,
+        "present_at_all_locations": true,
+        "modifier_list_data": {
+          "name": "Milk",
+          "ordinal": { "$numberInt": "0" },
+          "selection_type": "MULTIPLE",
+          "modifiers": [
+            {
+              "type": "MODIFIER",
+              "id": "2OALQGV7RZDXWHSF3LW5IY6J",
+              "updated_at": "2023-07-11T22:51:39.034Z",
+              "created_at": "2023-07-11T22:51:39.034Z",
+              "version": { "$numberDouble": "1689115899034.0" },
+              "is_deleted": false,
+              "present_at_all_locations": true,
+              "modifier_data": {
+                "name": "Oat Milk",
+                "price_money": {
+                  "amount": { "$numberInt": "100" },
+                  "currency": "USD"
+                },
+                "on_by_default": false,
+                "ordinal": { "$numberInt": "1" },
+                "modifier_list_id": "BEXPPOCIODVSPHGHAI6NFQJE"
+              }
+            },
+            {
+              "type": "MODIFIER",
+              "id": "ZESMEIY3NNFJKLIHBC7FDREZ",
+              "updated_at": "2023-07-11T22:51:39.034Z",
+              "created_at": "2023-07-11T22:51:39.034Z",
+              "version": { "$numberDouble": "1689115899034.0" },
+              "is_deleted": false,
+              "present_at_all_locations": true,
+              "modifier_data": {
+                "name": "Almond Milk",
+                "price_money": {
+                  "amount": { "$numberInt": "100" },
+                  "currency": "USD"
+                },
+                "on_by_default": false,
+                "ordinal": { "$numberInt": "2" },
+                "modifier_list_id": "BEXPPOCIODVSPHGHAI6NFQJE"
+              }
+            },
+            {
+              "type": "MODIFIER",
+              "id": "4QV3PG6AHWPYU44YUTJYJJJ3",
+              "updated_at": "2023-07-15T23:58:33.055Z",
+              "created_at": "2023-07-15T23:58:33.055Z",
+              "version": { "$numberDouble": "1689465513055.0" },
+              "is_deleted": false,
+              "present_at_all_locations": true,
+              "modifier_data": {
+                "name": "Whole",
+                "price_money": {
+                  "amount": { "$numberInt": "0" },
+                  "currency": "USD"
+                },
+                "on_by_default": false,
+                "ordinal": { "$numberInt": "3" },
+                "modifier_list_id": "BEXPPOCIODVSPHGHAI6NFQJE"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "ITEM",
+        "id": "QEKSUEKFFASPLOLBPXCWMOMA",
+        "updated_at": "2023-07-18T21:48:02.277Z",
+        "created_at": "2023-07-11T22:52:16.1Z",
+        "version": { "$numberDouble": "1689716882277.0" },
+        "is_deleted": false,
+        "present_at_all_locations": true,
+        "item_data": {
+          "name": "Latte",
+          "description": "Espresso with 10 oz of milk",
+          "is_taxable": true,
+          "visibility": "PRIVATE",
+          "category_id": "SPQMSK6BSZ5MKESR7PG3WSMW",
+          "modifier_list_info": [
+            {
+              "modifier_list_id": "BEXPPOCIODVSPHGHAI6NFQJE",
+              "visibility": "PUBLIC",
+              "min_selected_modifiers": { "$numberInt": "-1" },
+              "max_selected_modifiers": { "$numberInt": "-1" },
+              "enabled": true
+            }
+          ],
+          "variations": [
+            {
+              "type": "ITEM_VARIATION",
+              "id": "BR4UFOCKWWUJJNBJXYZHP5GY",
+              "updated_at": "2023-07-18T21:48:02.277Z",
+              "created_at": "2023-07-11T22:52:16.1Z",
+              "version": { "$numberDouble": "1689716882277.0" },
+              "is_deleted": false,
+              "present_at_all_locations": true,
+              "item_variation_data": {
+                "item_id": "QEKSUEKFFASPLOLBPXCWMOMA",
+                "name": "Regular",
+                "ordinal": { "$numberInt": "1" },
+                "pricing_type": "FIXED_PRICING",
+                "price_money": {
+                  "amount": { "$numberInt": "500" },
+                  "currency": "USD"
+                },
+                "track_inventory": false,
+                "sellable": true,
+                "stockable": true
+              }
+            }
+          ],
+          "product_type": "REGULAR",
+          "skip_modifier_screen": false,
+          "ecom_visibility": "UNINDEXED",
+          "description_html": "<p>Espresso with 10 oz of milk</p>",
+          "description_plaintext": "Espresso with 10 oz of milk"
+        }
+      },
+      {
+        "type": "ITEM",
+        "id": "ENTNFZD5P3TVDSWZSNVY47RJ",
+        "updated_at": "2023-07-18T21:48:14.679Z",
+        "created_at": "2023-07-11T22:52:45.714Z",
+        "version": { "$numberDouble": "1689716894679.0" },
+        "is_deleted": false,
+        "present_at_all_locations": true,
+        "item_data": {
+          "name": "Cappucino",
+          "description": "Espresso with 4 oz of milk",
+          "is_taxable": true,
+          "visibility": "PRIVATE",
+          "category_id": "SPQMSK6BSZ5MKESR7PG3WSMW",
+          "modifier_list_info": [
+            {
+              "modifier_list_id": "BEXPPOCIODVSPHGHAI6NFQJE",
+              "visibility": "PUBLIC",
+              "min_selected_modifiers": { "$numberInt": "-1" },
+              "max_selected_modifiers": { "$numberInt": "-1" },
+              "enabled": true
+            }
+          ],
+          "variations": [
+            {
+              "type": "ITEM_VARIATION",
+              "id": "MLADSBNHKVDEOF3JZJNLHSZ2",
+              "updated_at": "2023-07-18T21:48:14.679Z",
+              "created_at": "2023-07-11T22:52:45.714Z",
+              "version": { "$numberDouble": "1689716894679.0" },
+              "is_deleted": false,
+              "present_at_all_locations": true,
+              "item_variation_data": {
+                "item_id": "ENTNFZD5P3TVDSWZSNVY47RJ",
+                "name": "Regular",
+                "ordinal": { "$numberInt": "1" },
+                "pricing_type": "FIXED_PRICING",
+                "price_money": {
+                  "amount": { "$numberInt": "500" },
+                  "currency": "USD"
+                },
+                "track_inventory": false,
+                "sellable": true,
+                "stockable": true
+              }
+            }
+          ],
+          "product_type": "REGULAR",
+          "skip_modifier_screen": false,
+          "ecom_visibility": "UNINDEXED",
+          "description_html": "<p>Espresso with 4 oz of milk</p>",
+          "description_plaintext": "Espresso with 4 oz of milk"
+        }
+      },
+      {
+        "type": "CATEGORY",
+        "id": "SPQMSK6BSZ5MKESR7PG3WSMW",
+        "updated_at": "2023-07-16T00:00:20.792Z",
+        "created_at": "2023-07-16T00:00:20.792Z",
+        "version": { "$numberDouble": "1689465620792.0" },
+        "is_deleted": false,
+        "present_at_all_locations": true,
+        "category_data": { "name": "Espresso", "is_top_level": true }
+      },
+      {
+        "type": "ITEM",
+        "id": "D3T5AXBQC75NYI45L4BWKL7X",
+        "updated_at": "2023-07-16T00:01:47.507Z",
+        "created_at": "2023-07-16T00:01:47.507Z",
+        "version": { "$numberDouble": "1689465707507.0" },
+        "is_deleted": false,
+        "present_at_all_locations": true,
+        "item_data": {
+          "name": "Pour Over",
+          "description": "Pour over coffee",
+          "is_taxable": true,
+          "visibility": "PRIVATE",
+          "variations": [
+            {
+              "type": "ITEM_VARIATION",
+              "id": "L6LMT2BXLVE7BSRH2T5TJBWP",
+              "updated_at": "2023-07-16T00:01:47.507Z",
+              "created_at": "2023-07-16T00:01:47.507Z",
+              "version": { "$numberDouble": "1689465707507.0" },
+              "is_deleted": false,
+              "present_at_all_locations": true,
+              "item_variation_data": {
+                "item_id": "D3T5AXBQC75NYI45L4BWKL7X",
+                "name": "Colombia",
+                "ordinal": { "$numberInt": "1" },
+                "pricing_type": "FIXED_PRICING",
+                "price_money": {
+                  "amount": { "$numberInt": "500" },
+                  "currency": "USD"
+                },
+                "location_overrides": [
+                  { "location_id": "R6NGKS1BACJQ9", "track_inventory": false }
+                ],
+                "track_inventory": false,
+                "sellable": true,
+                "stockable": true
+              }
+            },
+            {
+              "type": "ITEM_VARIATION",
+              "id": "3XBP3OWKLRQAMCDR3LCBQ4FQ",
+              "updated_at": "2023-07-16T00:01:47.507Z",
+              "created_at": "2023-07-16T00:01:47.507Z",
+              "version": { "$numberDouble": "1689465707507.0" },
+              "is_deleted": false,
+              "present_at_all_locations": true,
+              "item_variation_data": {
+                "item_id": "D3T5AXBQC75NYI45L4BWKL7X",
+                "name": "Brazil",
+                "ordinal": { "$numberInt": "2" },
+                "pricing_type": "FIXED_PRICING",
+                "price_money": {
+                  "amount": { "$numberInt": "500" },
+                  "currency": "USD"
+                },
+                "sellable": true,
+                "stockable": true
+              }
+            },
+            {
+              "type": "ITEM_VARIATION",
+              "id": "AYGA3PIKENPQHIFUUQZYZRQJ",
+              "updated_at": "2023-07-16T00:01:47.507Z",
+              "created_at": "2023-07-16T00:01:47.507Z",
+              "version": { "$numberDouble": "1689465707507.0" },
+              "is_deleted": false,
+              "present_at_all_locations": true,
+              "item_variation_data": {
+                "item_id": "D3T5AXBQC75NYI45L4BWKL7X",
+                "name": "Yemen",
+                "ordinal": { "$numberInt": "3" },
+                "pricing_type": "FIXED_PRICING",
+                "price_money": {
+                  "amount": { "$numberInt": "700" },
+                  "currency": "USD"
+                },
+                "sellable": true,
+                "stockable": true
+              }
+            },
+            {
+              "type": "ITEM_VARIATION",
+              "id": "PHILMVXI6B3ESPZBDHI7RTIN",
+              "updated_at": "2023-07-16T00:01:47.507Z",
+              "created_at": "2023-07-16T00:01:47.507Z",
+              "version": { "$numberDouble": "1689465707507.0" },
+              "is_deleted": false,
+              "present_at_all_locations": true,
+              "item_variation_data": {
+                "item_id": "D3T5AXBQC75NYI45L4BWKL7X",
+                "name": "Ethiopia",
+                "ordinal": { "$numberInt": "4" },
+                "pricing_type": "FIXED_PRICING",
+                "price_money": {
+                  "amount": { "$numberInt": "500" },
+                  "currency": "USD"
+                },
+                "sellable": true,
+                "stockable": true
+              }
+            }
+          ],
+          "product_type": "REGULAR",
+          "skip_modifier_screen": false,
+          "description_html": "<p>Pour over coffee</p>",
+          "description_plaintext": "Pour over coffee"
+        }
+      }
+    ]
+  },
+  "merchant_id": "X4CBG4W4YMYE3"
+}
