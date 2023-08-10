@@ -73,6 +73,35 @@ export async function getSquareCatalog(merchant_id: string) {
     });
 }
 
+export async function putOrder(order: any) {
+    const db = client.db("test");
+    return await db.collection('orders').insertOne(order);
+}
+
+export async function getOrders(merchant_id: string) {
+    const db = client.db("test");
+    return await db.collection('orders').find({
+        merchant_id,
+        completed: false
+    }).toArray();
+}
+
+export async function completeOrder(merchant_id: string, order_id: string) {
+    const db = client.db("test");
+    return await db.collection('orders').updateOne(
+        { merchant_id, order_id }, 
+        { $set: { completed: true, completed_at: new Date() } }
+    );
+}
+
+export async function getCompletedOrders(merchant_id: string) {
+    const db = client.db("test");
+    return await db.collection('orders').find({ 
+        merchant_id, 
+        completed: true }).toArray();
+}
+
+
 export async function getUser(username: string) {
     const test_db = client.db("test");
     return await test_db.collection('users').findOne({
