@@ -27,6 +27,36 @@ export const getMenu = async (token: string) => {
   return res.data;  
 };
 
+export const sendOrder = async (token: string, order: any) => {
+  console.log('Sending Order');
+  const res = await instance.post(`/orders?access_token=${token}`, order);
+  console.log(res.data);
+  if (res.data.error) {
+    return false;
+  }
+  return res.data;
+};
+
+export const getOrders = async (token: string) => {
+  console.log('Getting Orders');
+  const res = await instance.get(`/orders?access_token=${token}`);
+  console.log(res.data);
+  if (res.data.error) {
+    return [];
+  }
+  return res.data;
+};
+
+export const markOrderComplete = async (token: string, order_id: string) => {
+  console.log('Marking Order Complete');
+  const res = await instance.post(`/orders/${order_id}?access_token=${token}`);
+  console.log(res.data);
+  if (res.data.error) {
+    return false;
+  }
+  return res.data;
+};
+
 export const getData = async <T>(
     url: string,
     email: string,

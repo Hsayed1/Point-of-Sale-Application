@@ -92,7 +92,7 @@ type Item = {
     item_data: ItemData;
 }
 
-type MenuItem = ModifierList | Item;
+type MenuItem = ModifierList | Item | any;
 
 type Menu = MenuItem[];
 

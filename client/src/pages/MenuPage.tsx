@@ -4,7 +4,7 @@ import { Colors, Overlay } from "@blueprintjs/core";
 import MenuModal from "../components/menu/MenuModal";
 import { useNavigate } from "react-router-dom";
 import CompleteOrderButton from "../components/menu/CompleteOrderButton";
-import { getMenu } from "../utils/data-utils";
+import { getMenu, sendOrder } from "../utils/data-utils";
 import MenuItemCard from "../components/menu/MenuItemCard";
 import { Item, Menu, MenuItem } from "../utils/store";
 import "./Styles/MenuPage.css";
@@ -14,30 +14,18 @@ type MenuProps = {
   token: string;
 };
 
-//interface to represent dataobject for local testing
-interface DataObject {
-  _id: { $oid: string };
-  catalog: {
-    objects: Array<any>;
-  };
-  merchant_id: string;
-}
 
 const MenuPage = ({ token }: MenuProps) => {
   //data array to hold json data for local testing
-  const [data, setData] = useState<DataObject | null>(null);
+  const [data, setData] = useState<Menu | null>(null);
 
   const [cartItems, setCartItems] = useState<
     { name: string; quantity: number }[]
   >([]); // Array to hold cart items
 
   useEffect(() => {
-    fetch("/StoreData.json")
-      .then((response) => response.json())
-      .then((jsonData) => setData(jsonData))
-      .catch((error) => console.error("Error fetching data:", error));
     getMenu(token).then((m) => {
-      //setMenu(m);
+      setData(m);
     });
   }, []);
 
@@ -66,8 +54,8 @@ const MenuPage = ({ token }: MenuProps) => {
   };
 
   //rendering product buttons
-  const renderProductButtons = (data: DataObject) => {
-    return data.catalog.objects.map((object, index) => {
+  const renderProductButtons = (data: Menu) => {
+    return data.map((object, index) => {
       if (object.type === "ITEM") {
         return (
           <div key={index} className="menuButtonWrapperStyle">
@@ -111,10 +99,10 @@ const MenuPage = ({ token }: MenuProps) => {
   };
 
   //callback function to clear cart for new orders
-  const handleOrderComplete = () => {
+  const handleOrderComplete = async () => {
+    console.log("Order submitted");
     setCartItems([]);
-    renderCartItems(cartItems)
-
+    renderCartItems(cartItems);
   };
   
 
@@ -132,7 +120,11 @@ const MenuPage = ({ token }: MenuProps) => {
           </div>
         </div>
       </div>
-      <CompleteOrderButton cartItems={cartItems} onOrderComplete={handleOrderComplete} />
+      <CompleteOrderButton 
+        token={token} 
+        cartItems={cartItems} 
+        onOrderComplete={handleOrderComplete} 
+      />
     </div>
   );
 };
