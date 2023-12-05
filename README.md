@@ -1,0 +1,3 @@
+# Point-of-Sale-Application
+
+The Point of Sale (POS) system serves as the headquarters of business transactions. It facilitates order processing and customer interactions. This project introduces a POS solution targeted towards cash-only businesses and catering events, reshaping traditional practices. Our implementation of the POS system forms a digital channel for seamless order management as opposed to the traditional paper orders. This modernized POS framework signifies a transition from conventional to efficient, user-centric interactions, aligning with today's digital landscape and revolutionizing transactional experiences.
